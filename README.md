@@ -1,4 +1,5 @@
-# Hackintosh for MAG B660M MORTAR WIFI DDR4
+# Hackintosh for MSI MAG B660M MORTAR WIFI DDR4
+MSI MAG B660M MORTAR DDR4 is also supported.
 
 ## My Configurations
 | Components | Model |
