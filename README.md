@@ -9,19 +9,20 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 | Graphics cards | GIGABYTE AORUS Radeon™ RX 6800 XT MASTER 16G |
 | Memory | Crucial Ballistix DDR4 3200 16Gx2 |
 | Wifi and Bluetooth card | fenvi T919(BCM94360CD) |
-| Drive | Samsung PM9A1 2TB for Windows, Kioxia RC20 1TB for macOS |
-| OpenCore version | 0.8.0 |
-| macOS version | macOS Monterey 12.4 |
+| Drive | Samsung PM9A1 2TB for `Windows`, Kioxia RC20 for `macOS`　|
+| OpenCore version | 0.8.1 |
+| macOS version | macOS Monterey 12.4 (21E258) |
 
 ## BIOS Settings
 ### Disable
-1. Fast Boot
-2. Secure Boot
-4. Intel CFG lock
+1. Fast Boot `[Required]`
+2. Secure Boot `[Required]`
+3. Intel CFG lock `[Required]`
+4. Intel VT-d `[Optional]`
 
 ### Enable
-1. Re-Size Bar Support
-2. ERP Ready
+1. Re-Size Bar Support `[Optional]`
+2. ERP Ready `[Optional]`
 
 ## Generate your PlatformInfo
 Fllowing this guide: [using-gensmbios](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#using-gensmbios) to generate platform info and filling info into opencore config `PlatformInfo - Generic`.
