@@ -10,14 +10,22 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 | Memory | Crucial Ballistix DDR4 3200 16Gx2 |
 | Wifi and Bluetooth card | fenvi T919(BCM94360CD) |
 | Drive | Samsung PM9A1 2TB for `Windows`, Kioxia RC20 for `macOS`　|
-| OpenCore version | 0.8.1 |
+| OpenCore version | 0.8.2 |
 | macOS version | macOS Monterey 12.4 (21E258) |
+
+## What's working?
+1. All.
+
+```
+Sidecar doesn't working due to the 12th gen intel CPU internal graphic card unable to drive. 
+Not this EFI problem.
+```
 
 ## Changelog
 ### 2022-07-21
-1. Update opencore to version 0.8.1.
+1. Update opencore to version 0.8.2.
 2. Update kexts.
-3. Enable 256MB GPU resize bar for better perference. Hit: If you has sleep issues with large BARs, change ResizeAppleGpuBars to 0, it will set to 1MB resize bar.
+3. Enable 256MB GPU resize bar for better perference. Note: If you has sleep issues with large BARs, change ResizeAppleGpuBars to 0, it will set resize bar to 1MB.
 4. Default enable SMCRadeonGPU.kext and RadeonSensor.kext for monitoring radeon GPU temperature on macOS.
 5. Add missing default themes.
 
@@ -30,8 +38,8 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 
 ### Enable
 1. Re-Size Bar Support `[Required]`
-2. USB wake up from s3/s4/s5 `[Optional] used for wake up from slepp using USB HID device.`
-3. ERP Ready `[Optional] used for wake up from slepp using USB HID device.`
+2. USB wake up from s3/s4/s5 `[Optional] used for wake up from sleep using USB HID device.`
+3. ERP Ready `[Optional] used for wake up from sleep using USB HID device.`
 
 ## About USB map
 Maybe you need to make some changes to suit your USB and case, current usb mapping is from [yzchan](https://github.com/yzchan/MSI-MAG-B660M-MORTAR-DDR4-12600K-EFI/blob/master/USB%E5%AE%9A%E5%88%B6.md)(thanks yzchan for saved us a lot of time).
