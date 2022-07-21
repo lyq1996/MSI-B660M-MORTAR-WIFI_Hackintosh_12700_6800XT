@@ -13,16 +13,28 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 | OpenCore version | 0.8.1 |
 | macOS version | macOS Monterey 12.4 (21E258) |
 
+## Changelog
+### 2022-07-21
+1. Update opencore to version 0.8.1.
+2. Update kexts.
+3. Enable 256MB GPU resize bar for better perference. Hit: If you has sleep issues with large BARs, change ResizeAppleGpuBars to 0, it will set to 1MB resize bar.
+4. Default enable SMCRadeonGPU.kext and RadeonSensor.kext for monitoring radeon GPU temperature on macOS.
+5. Add missing default themes.
+
 ## BIOS Settings
 ### Disable
-1. Fast Boot `[Required]`
-2. Secure Boot `[Required]`
-3. Intel CFG lock `[Required]`
-4. Intel VT-d `[Optional]`
+1. Secure Boot `[Required]`
+2. Intel CFG lock `[Required]`
+3. Intel VT-d `[Optional]`
+4. Fast Boot `[Optional]`
 
 ### Enable
-1. Re-Size Bar Support `[Optional]`
-2. ERP Ready `[Optional]`
+1. Re-Size Bar Support `[Required]`
+2. USB wake up from s3/s4/s5 `[Optional] used for wake up from slepp using USB HID device.`
+3. ERP Ready `[Optional] used for wake up from slepp using USB HID device.`
+
+## About USB map
+Maybe you need to make some changes to suit your USB and case, current usb mapping is from [yzchan](https://github.com/yzchan/MSI-MAG-B660M-MORTAR-DDR4-12600K-EFI/blob/master/USB%E5%AE%9A%E5%88%B6.md)(thanks yzchan for saved us a lot of time).
 
 ## Generate your PlatformInfo
 Fllowing this guide: [using-gensmbios](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#using-gensmbios) to generate platform info and filling info into opencore config `PlatformInfo - Generic`.
@@ -86,9 +98,6 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "spoof", 0x00000000)
 ## Support for other AMD GPUs
 See [AMD GPUs
 #](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/amd-gpu.html#amd-gpus) for more details.
-
-## About USB map
-Maybe you need to make some changes to suit your USB and case, current usb mapping is from [yzchan](https://github.com/yzchan/MSI-MAG-B660M-MORTAR-DDR4-12600K-EFI/blob/master/USB%E5%AE%9A%E5%88%B6.md)(thanks yzchan for saved us a lot of time).
 
 ## References
 1. https://github.com/yzchan/MSI-MAG-B660M-MORTAR-DDR4-12600K-EFI
