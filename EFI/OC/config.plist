@@ -33,7 +33,7 @@
                 <dict>
                     <key>Comment</key>
                     <string></string>
-                    <key>Enabled</key>
+                    <key>Disabled</key>
                     <true/>
                     <key>Path</key>
                     <string>SSDT-DNVMe.aml</string>
