@@ -14,10 +14,13 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 | macOS version | macOS Monterey 12.4 (21E258) |
 
 ## What's working?
-1. All.
+1. Almost All.
+
+## What's not working?
+1. For WIFI montherboard, onboard bluetooth and WiFi was not working.
 
 ```
-Sidecar doesn't working due to the 12th gen intel CPU internal graphic card unable to drive. 
+Sidecar doesn't working due to the internal graphic card of the 12th gen intel CPU was unable to drive. 
 Not this EFI problem.
 ```
 
@@ -33,19 +36,25 @@ Not this EFI problem.
 ### Disable
 1. Secure Boot `[Required]`
 2. Intel CFG lock `[Required]`
-3. Intel VT-d `[Optional]`
-4. Fast Boot `[Optional]`
+3. Fast Boot `[Optional]`
 
 ### Enable
 1. Re-Size Bar Support `[Required]`
 2. USB wake up from s3/s4/s5 `[Optional] used for wake up from sleep using USB HID device.`
 3. ERP Ready `[Optional] used for wake up from sleep using USB HID device.`
+4. SR-IOV `[Optional]`
+
+
+## Generate your PlatformInfo `[Important]`
+Fllowing this guide: [using-gensmbios](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#using-gensmbios) to generate platform info and filling info into opencore config `PlatformInfo - Generic`.
+
+## Support for other AMD GPUs
+This EFI supports 6000 Series AMD GPUs.
+
+For 5000 series and below, see [AMD GPUs #](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/amd-gpu.html#amd-gpus) for more details.
 
 ## About USB map
 Maybe you need to make some changes to suit your USB and case, current usb mapping is from [yzchan](https://github.com/yzchan/MSI-MAG-B660M-MORTAR-DDR4-12600K-EFI/blob/master/USB%E5%AE%9A%E5%88%B6.md)(thanks yzchan for saved us a lot of time).
-
-## Generate your PlatformInfo
-Fllowing this guide: [using-gensmbios](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#using-gensmbios) to generate platform info and filling info into opencore config `PlatformInfo - Generic`.
 
 ## Disbale NVMe drive
 If you want to disable a NVMe drive that doesn't support hackintosh, just enable `ACPI - Add - SSDT-DNVMe.aml`, it will disable the NVMe drive which inserted into M.2 slot 1. 
@@ -102,10 +111,6 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "spoof", 0x00000000)
 ## Disable verbose 
 1. Set `Misc - Debug -  AppleDebug`、`Disable WatchDog`、 `ApplePanic` to false
 2. Change `NVRAM - Add - 7C436110-AB2A-4BBB-A880-FE41995C9F82 - boot-args` to `-wegnoigpu agdpmod=pikera`
-
-## Support for other AMD GPUs
-See [AMD GPUs
-#](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/amd-gpu.html#amd-gpus) for more details.
 
 ## References
 1. https://github.com/yzchan/MSI-MAG-B660M-MORTAR-DDR4-12600K-EFI
