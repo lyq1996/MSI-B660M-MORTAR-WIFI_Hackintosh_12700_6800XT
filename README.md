@@ -11,7 +11,7 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 | Wifi and Bluetooth card | fenvi T919(BCM94360CD) |
 | Drive | Samsung PM9A1 2TB for `Windows`, Kioxia RC20 for `macOS`　|
 | OpenCore version | 0.8.2 |
-| macOS version | macOS Monterey 12.4 (21E258) |
+| macOS version | macOS Monterey 12.5 (21G72) |
 
 ## What's working?
 1. Almost All.
@@ -25,6 +25,13 @@ Not this EFI problem.
 ```
 
 ## Changelog
+### 2022-08-15
+1. Update opencore to version 0.8.3.
+2. Update Lilu.kext to V1.6.2.
+3. Update AppleALC.kext to V1.7.4.
+4. Update WhateverGreen.kext to V1.6.1.
+5. Add CpuTopologyRebuild.kext to recognize i7-12700 as 8C20T processor, which should have better single-thread performance.
+
 ### 2022-07-21
 1. Update opencore to version 0.8.2.
 2. Update kexts.
@@ -47,6 +54,10 @@ Not this EFI problem.
 
 ## Generate your PlatformInfo `[Important]`
 Fllowing this guide: [using-gensmbios](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#using-gensmbios) to generate platform info and filling info into opencore config `PlatformInfo - Generic`.
+
+## About CpuTopologyRebuild.kext `[Important]`
+This kext spoof e-core as logical core of p-core, which increases the chance of p-core being scheduled in 12-gen heterogeneous CPUs, resulting in better single-thread performance (especially in Virtual Machine).   
+So, If your CPU is not 12600(f/k/kf)/12700(f/k/kf)/12900(f/k/kf), remove this kext and remove the -ctrsmt boot args!!!
 
 ## Support for other AMD GPUs
 This EFI supports 6000 Series AMD GPUs.
