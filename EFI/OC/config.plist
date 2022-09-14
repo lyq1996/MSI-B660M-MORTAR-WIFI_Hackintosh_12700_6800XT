@@ -560,7 +560,7 @@
             <key>Debug</key>
             <dict>
                 <key>AppleDebug</key>
-			    <true/>
+                <true/>
 			    <key>ApplePanic</key>
 			    <true/>
 			    <key>DisableWatchDog</key>

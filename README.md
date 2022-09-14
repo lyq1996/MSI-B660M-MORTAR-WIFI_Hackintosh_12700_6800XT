@@ -25,6 +25,9 @@ Not this EFI problem.
 ```
 
 ## Changelog
+### 2022-09-14
+1. Update opencore to version 0.8.4.
+
 ### 2022-08-15
 1. Update opencore to version 0.8.3.
 2. Update Lilu.kext to V1.6.2.
