@@ -12,7 +12,7 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 | Memory | Crucial Ballistix DDR4 3200 16Gx2 |
 | Wifi and Bluetooth card | fenvi T919(BCM94360CD) |
 | Drive | Samsung PM9A1 2TB for `Windows`, Kioxia RC20 for `macOS`　|
-| OpenCore version | 0.8.4 |
+| OpenCore version | 0.8.5 |
 | macOS version | macOS Monterey 12.6 (21G115) |
 
 ## What's working?
@@ -23,9 +23,13 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 
 ⚠️:
 * OpenIntelWireless's [IntelBluetoothFirmware driver](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) has been able to support the Bluetooth of the new batches of AX201 in Monterey. You can add kext by yourself.
-* Sidecar doesn't working due to the internal graphic card of the 12th gen intel CPU was unable to drive. 
+* Sidecar doesn't working because the internal graphic card of the 12th gen intel CPU was unable to drive. 
 
 ## Changelog
+### 2022-10-26
+1. Update opencore to version 0.8.5.
+2. Update AppleALC.kext to 1.7.5.
+
 ### 2022-09-14
 1. Update opencore to version 0.8.4.
 
@@ -126,7 +130,7 @@ DefinitionBlock ("", "SSDT", 2, "DRTNIA", "spoof", 0x00000000)
 
 ## Disable verbose 
 1. Set `Misc - Debug -  AppleDebug`、`Disable WatchDog`、 `ApplePanic` to false.
-2. Change `-v debug=0x100 keepsyms=1` in `boot-args`.
+2. Remove `-v debug=0x100 keepsyms=1` in `boot-args`.
 
 ## References
 1. https://github.com/yzchan/MSI-MAG-B660M-MORTAR-DDR4-12600K-EFI

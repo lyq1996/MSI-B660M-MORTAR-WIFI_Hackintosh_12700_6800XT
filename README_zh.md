@@ -12,7 +12,7 @@
 | 内存 | 英睿达铂胜DDR4 3200MHz 16GBx2 |
 | Wi-Fi与蓝牙 | fenvi T919(BCM94360CD白果拆机卡) |
 | 硬盘 | 三星PM9A1 2TB(`Windows`), 凯侠RC20(`macOS`)　|
-| OpenCore版本 | 0.8.4 |
+| OpenCore版本 | 0.8.5 |
 | macOS版本 | macOS Monterey 12.6 (21G115) |
 
 ## 哪些东西工作?
@@ -26,6 +26,10 @@
 * 由于12代cpu的核显无法正常驱动，随航不可用。
 
 ## 更新日志
+### 2022-10-26
+1. 更新opencore版本到0.8.5。
+2. 更新AppleALC.kext版本到1.7.5。
+
 ### 2022-09-14
 1. 更新opencore版本到0.8.4。
 
@@ -61,7 +65,7 @@
 ## 关于CpuTopologyRebuild.kext`【！！！重要！！！】`
 这个kext将e-core视为p-core的一个逻辑核心。(推测)在12代异构cpu调度时，提高了p-core的调度机会，带来了单线程的更高性能（因为8C20T时大核心被调度的几率，大于20C20T时的大核心被调度几率）。同样，在虚拟机中，在p-core上调度的几率也会变大，因此虚拟机多核心跑分也会更高。在多线程cpu全吃满时，性能不变。  
 
-所以，如果你的cpu不是12600(f/k/kf)/12700(f/k/kf)/12900(f/k/kf)，关闭这个kext，并且中boot args中移除`-ctrsmt`。
+所以，如果你的cpu不是12600(f/k/kf)/12700(f/k/kf)/12900(f/k/kf)，关闭这个kext，并且从boot args中移除`-ctrsmt`。
 
 ## 关于其他AMD显卡的支持
 这个EFI无需修改，支持AMD 6000系列显卡。
