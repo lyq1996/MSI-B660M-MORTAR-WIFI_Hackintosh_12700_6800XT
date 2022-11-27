@@ -10,22 +10,29 @@
 | 主办 | 微星B660M迫击炮Wi-Fi DDR4 |
 | 显卡 | 技嘉6800XT 超级雕 |
 | 内存 | 英睿达铂胜DDR4 3200MHz 16GBx2 |
-| Wi-Fi与蓝牙 | fenvi T919(BCM94360CD白果拆机卡) |
+| Wi-Fi与蓝牙 | 支持板载AX201 但推荐T919(BCM94360CD白果拆机卡） |
 | 硬盘 | 三星PM9A1 2TB(`Windows`), 凯侠RC20(`macOS`)　|
-| OpenCore版本 | 0.8.5 |
-| macOS版本 | macOS Monterey 12.6 (21G115) |
+| OpenCore版本 | 0.8.6 |
+| macOS版本 | macOS Monterey 12.6.1 (21G217) |
 
 ## 哪些东西工作?
 1. 几乎所有
 
 ## 哪些东西不工作?
-1. 对于B660M迫击炮Wi-Fi版，由于新版AX201(蓝牙5.2)在macOS Monterey存在固件上传问题，故板载蓝牙无法正常工作，板载Wi-Fi也就没有放置对应驱动。推荐使用白果免驱卡。
+1. ~~对于B660M迫击炮Wi-Fi版，由于新版AX201(蓝牙5.2)在macOS Monterey存在固件上传问题，故板载蓝牙无法正常工作，板载Wi-Fi也就没有放置对应驱动。推荐使用白果免驱卡。~~ `本EFI已支持。`
 
 注意⚠️：
-* 截止2022年9月14日，OpenIntelWireless的[IntelBluetoothFirmware驱动](https://github.com/OpenIntelWireless/IntelBluetoothFirmware)已能够在Monterey支持新版AX201的蓝牙，如有需要，可自行添加kext。
+* ~~截止2022年9月14日，OpenIntelWireless的[IntelBluetoothFirmware驱动](https://github.com/OpenIntelWireless/IntelBluetoothFirmware)已能够在Monterey支持新版AX201的蓝牙，如有需要，可自行添加kext。~~ `本EFI已支持。`
 * 由于12代cpu的核显无法正常驱动，随航不可用。
 
 ## 更新日志
+### 2022-11-27
+1. 更新opencore版本到0.8.6。
+2. 更新AppleALC.kext版本到1.7.6。
+3. 更新RestrictEvents.kext版本到1.0.9。
+4. 移除SMCRadeonGPU.kext、RadeonSensor.kext。
+5. 添加AX201板载蓝牙的USB定制，添加AirportItlwm.kext(V2.1.0)、IntelBTPatcher.kext(V2.2.0)、IntelBluetoothFirmware.kext(V2.2.0)、BlueToolFixup.kext(V2.6.4)。
+
 ### 2022-10-26
 1. 更新opencore版本到0.8.5。
 2. 更新AppleALC.kext版本到1.7.5。
@@ -66,6 +73,12 @@
 这个kext将e-core视为p-core的一个逻辑核心。(推测)在12代异构cpu调度时，提高了p-core的调度机会，带来了单线程的更高性能（因为8C20T时大核心被调度的几率，大于20C20T时的大核心被调度几率）。同样，在虚拟机中，在p-core上调度的几率也会变大，因此虚拟机多核心跑分也会更高。在多线程cpu全吃满时，性能不变。  
 
 所以，如果你的cpu不是12600(f/k/kf)/12700(f/k/kf)/12900(f/k/kf)，关闭这个kext，并且从boot args中移除`-ctrsmt`。
+
+## 关于B660M迫击炮Wi-Fi的板载Wi-Fi和蓝牙`【！！！重要！！！】`
+在`2022-11-27`的EFI更新中，加入了对板载Wi-Fi和蓝牙的支持，定制了蓝牙但USB。但默认并没有开启。我的型号是AX201，部分AX211的主板应该也可以支持。  
+
+1. 如果需要使用板载Wi-Fi，启用AirportItlwm.kext。  
+2. 如果需要使用板载蓝牙，启用IntelBTPatcher.kext、IntelBluetoothFirmware.kext、BlueToolFixup.kext，即可。
 
 ## 关于其他AMD显卡的支持
 这个EFI无需修改，支持AMD 6000系列显卡。

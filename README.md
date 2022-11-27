@@ -10,22 +10,29 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 | Motherboard | MSI MAG B660M MORTAR WIFI DDR4 |
 | Graphics cards | GIGABYTE AORUS Radeon™ RX 6800 XT MASTER 16G |
 | Memory | Crucial Ballistix DDR4 3200 16Gx2 |
-| Wifi and Bluetooth card | fenvi T919(BCM94360CD) |
+| Wifi and Bluetooth card | Support onboard Wi-Fi and Bluetooth, but recommend T919(BCM94360CD official apple card) |
 | Drive | Samsung PM9A1 2TB for `Windows`, Kioxia RC20 for `macOS`　|
-| OpenCore version | 0.8.5 |
-| macOS version | macOS Monterey 12.6 (21G115) |
+| OpenCore version | 0.8.6 |
+| macOS version | macOS Monterey 12.6.1 (21G217) |
 
 ## What's working?
 1. Almost All.
 
 ## What's not working?
-1. For WIFI montherboard, due the firmware upload problem of the new batches AX201(bluetooth 5.2) in macOS Monterey, onboard bluetooth was not working. I also don't want to add the corresponding wifi driver, it is recommended to use official apple wifi card.
+1. ~~~For WIFI montherboard, due the firmware upload problem of the new batches AX201(bluetooth 5.2) in macOS Monterey, onboard bluetooth was not working. I also don't want to add the corresponding wifi driver, it is recommended to use official apple wifi card.~~~ `Already supported.`
 
 ⚠️:
-* OpenIntelWireless's [IntelBluetoothFirmware driver](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) has been able to support the Bluetooth of the new batches of AX201 in Monterey. You can add kext by yourself.
+* ~~OpenIntelWireless's [IntelBluetoothFirmware driver](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) has been able to support the Bluetooth of the new batches of AX201 in Monterey. You can add kext by yourself.~~ `Already supported.`
 * Sidecar doesn't working because the internal graphic card of the 12th gen intel CPU was unable to drive. 
 
 ## Changelog
+### 2022-11-27
+1. Update opencore to version  0.8.6。
+2. Update AppleALC.kext to 1.7.6。
+3. Update RestrictEvents.kext to 1.0.9。
+4. Remove SMCRadeonGPU.kext、RadeonSensor.kext。
+5. Add usb mapping for onboard bluetooth，add AirportItlwm.kext(V2.1.0)、IntelBTPatcher.kext(V2.2.0)、IntelBluetoothFirmware.kext(V2.2.0)、BlueToolFixup.kext(V2.6.4)。
+
 ### 2022-10-26
 1. Update opencore to version 0.8.5.
 2. Update AppleALC.kext to 1.7.5.
@@ -67,6 +74,12 @@ To use this EFI, fllowing this guide: [using-gensmbios](https://dortania.github.
 This kext spoof e-core as logical core of p-core, which increases the chance of p-core being scheduled in 12-gen heterogeneous CPUs, resulting in better single-thread performance(the chance of p-core being scheduled at 8C20T is greater than that at 20C20T). In virutal machine, multi-thread performance was also increased. 
 
 So, If your CPU is not 12600(f/k/kf)/12700(f/k/kf)/12900(f/k/kf), remove this kext and remove the `-ctrsmt` boot args!!!
+
+## About Onboard Wi-Fi and bluetooth `[!!!Important!!!]`
+This EFI already supported for onboard Wi-Fi and Bluetooth, but it is not enabled by default. 
+
+1. If you want to use onboard Wi-Fi, enable AirportItlwm.kext.
+2. If you need to use onboard Bluetooth, enable IntelBTPatcher.kext, IntelBluetoothFirmware.kext, BlueToolFixup.kext.
 
 ## Support for other AMD GPUs
 This EFI supports 6000 Series AMD GPUs.
