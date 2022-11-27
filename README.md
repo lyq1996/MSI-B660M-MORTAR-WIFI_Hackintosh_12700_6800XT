@@ -19,7 +19,7 @@ MSI MAG B660M MORTAR DDR4 is also supported.
 1. Almost All.
 
 ## What's not working?
-1. ~~~For WIFI montherboard, due the firmware upload problem of the new batches AX201(bluetooth 5.2) in macOS Monterey, onboard bluetooth was not working. I also don't want to add the corresponding wifi driver, it is recommended to use official apple wifi card.~~~ `Already supported.`
+1. ~~For WIFI montherboard, due the firmware upload problem of the new batches AX201(bluetooth 5.2) in macOS Monterey, onboard bluetooth was not working. I also don't want to add the corresponding wifi driver, it is recommended to use official apple wifi card.~~ `Already supported.`
 
 ⚠️:
 * ~~OpenIntelWireless's [IntelBluetoothFirmware driver](https://github.com/OpenIntelWireless/IntelBluetoothFirmware) has been able to support the Bluetooth of the new batches of AX201 in Monterey. You can add kext by yourself.~~ `Already supported.`
